@@ -18,18 +18,18 @@ class Player(Resource):
         try:
             return {"data": getPlayerStatsFromDatabase(uuid)}
         except:
-            return {"data": {}}
+            return {"message": "Player not found!"}
 
 class PlayerWeight(Resource):
     def get(self, uuid):
-        # try:
-            return {"data": getPlayerWeightsFromDatabase(uuid)}
-        # except:
-        #     return {"data": {}}
+        try:
+            return {"data": db.selectQuery("SELECT players.UUID, players.username, profiles.profileID FROM players LEFT JOIN profiles ON (Players.UUID = profiles.UUID)")}
+        except:
+            return {"message": "Player not found!"}
 
 
 def getPlayerStatsFromDatabase(UUID: str):
-    return db.selectQuery("SELECT * FROM stats LEFT JOIN players p ON (p.UUID = stats.UUID) WHERE p.UUID = ?", params=(UUID, ))[0]
+    return db.selectQuery("SELECT * FROM stats LEFT JOIN players p ON (p.uuid = stats.uuid) WHERE p.uuid = ?", params=(UUID, ))[0]
 
 
 def getPlayerWeightsFromDatabase(UUID: str):
@@ -38,7 +38,7 @@ def getPlayerWeightsFromDatabase(UUID: str):
 
     player_weights = {}
     total = 0
-    skip_keys = ["UUID", "profileID", "collectTime", "username"]
+    skip_keys = ["uuid", "profileid", "collecttime", "username"]
     for key in player_values:
         if key in skip_keys: continue
         weight = weights[key]

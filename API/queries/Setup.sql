@@ -1,29 +1,29 @@
 CREATE TABLE players (
-    UUID varchar(100),
+    uuid varchar(100),
     username varchar(100),
 
-    PRIMARY KEY (UUID)
+    PRIMARY KEY (uuid)
 );
 
 CREATE TABLE profiles (
-    UUID varchar(100),
-    profileID varchar(100),
+    uuid varchar(100),
+    profileid varchar(100),
 
-    PRIMARY KEY (UUID, profileID)
+    PRIMARY KEY (uuid, profileid)
 );
 
 CREATE TABLE stats (
-    UUID varchar(100),
-    profileID varchar(100),
-    collectTime datetime,
-    Farming NUMERIC, 
-    Mining NUMERIC, 
-    Combat NUMERIC, 
-    Foraging NUMERIC, 
-    Fishing NUMERIC, 
-    Enchanting NUMERIC, 
-    Alchemy NUMERIC, 
-    Taming NUMERIC, 
+    uuid varchar(100),
+    profileid varchar(100),
+    collecttime datetime,
+    farming NUMERIC, 
+    mining NUMERIC, 
+    combat NUMERIC, 
+    foraging NUMERIC, 
+    fishing NUMERIC, 
+    enchanting NUMERIC, 
+    alchemy NUMERIC, 
+    taming NUMERIC, 
     zombie NUMERIC, 
     spider NUMERIC, 
     wolf NUMERIC,  
@@ -31,28 +31,28 @@ CREATE TABLE stats (
     minions NUMERIC, 
     collections NUMERIC,
 
-    PRIMARY KEY (UUID, profileID, collectTime),
-    FOREIGN KEY (UUID, profileID) REFERENCES profiles(UUID, profileID)
+    PRIMARY KEY (uuid, profileid, collecttime),
+    FOREIGN KEY (uuid, profileid) REFERENCES profiles(uuid, profileid)
 );
 
 CREATE TABLE weights (
     version int,
-    Farming NUMERIC, 
-    Farming_max NUMERIC,
-    Mining NUMERIC, 
-    Mining_max NUMERIC, 
-    Combat NUMERIC, 
-    Combat_max NUMERIC, 
-    Foraging NUMERIC, 
-    Foraging_max NUMERIC, 
-    Fishing NUMERIC, 
-    Fishing_max NUMERIC, 
-    Enchanting NUMERIC, 
-    Enchanting_max NUMERIC, 
-    Alchemy NUMERIC, 
-    Alchemy_max NUMERIC, 
-    Taming NUMERIC, 
-    Taming_max NUMERIC, 
+    farming NUMERIC, 
+    farming_max NUMERIC,
+    mining NUMERIC, 
+    mining_max NUMERIC, 
+    combat NUMERIC, 
+    combat_max NUMERIC, 
+    foraging NUMERIC, 
+    foraging_max NUMERIC, 
+    fishing NUMERIC, 
+    fishing_max NUMERIC, 
+    enchanting NUMERIC, 
+    enchanting_max NUMERIC, 
+    alchemy NUMERIC, 
+    alchemy_max NUMERIC, 
+    taming NUMERIC, 
+    taming_max NUMERIC, 
     zombie NUMERIC, 
     zombie_max NUMERIC, 
     spider NUMERIC, 
@@ -75,6 +75,14 @@ INSERT INTO players VALUES
 ('abcdefgh', 'testUser'),
 ('aaaaaaaa', 'user2');
 
-INSERT INTO profiles VALUES ('abcdefgh', 'testProfile');
+INSERT INTO profiles VALUES ('abcdefgh', 'testprofile');
+INSERT INTO profiles VALUES ('aaaaaa', 'aprofile');
+INSERT INTO profiles VALUES ('aaaaaa', 'aaprofile');
+INSERT INTO profiles VALUES ('aaaaaa', 'aaaprofile');
+INSERT INTO profiles VALUES ('aaaaaa', 'aaaaprofile');
 
-INSERT INTO stats VALUES ('abcdefgh', 'testProfile', '17-02-2022', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14);
+INSERT INTO stats VALUES ('abcdefgh', 'testprofile', '17-02-2022', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14);
+INSERT INTO stats VALUES ('aaaaaa', 'aprofile', '17-02-2022', 1, 2, 3, 4, 10, 6, 7, 8, 9, 10, 11, 12, 13, 14);
+INSERT INTO stats VALUES ('aaaaaa', 'aaprofile', '17-02-2022', 1, 2, 3, 4, 20, 6, 7, 8, 9, 10, 11, 12, 13, 14);
+INSERT INTO stats VALUES ('aaaaaa', 'aaaprofile', '17-02-2022', 1, 2, 3, 4, 13, 6, 7, 8, 9, 10, 11, 12, 13, 14);
+INSERT INTO stats VALUES ('aaaaaa', 'aaaaprofile', '17-02-2022', 1, 2, 3, 4, 15, 6, 7, 8, 9, 10, 11, 12, 13, 14);
