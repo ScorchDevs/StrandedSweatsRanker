@@ -37,33 +37,33 @@ CREATE TABLE stats (
 
 CREATE TABLE weights (
     version int,
-    farming NUMERIC, 
+    farming_weight NUMERIC, 
     farming_max NUMERIC,
-    mining NUMERIC, 
+    mining_weight NUMERIC, 
     mining_max NUMERIC, 
-    combat NUMERIC, 
+    combat_weight NUMERIC, 
     combat_max NUMERIC, 
-    foraging NUMERIC, 
+    foraging_weight NUMERIC, 
     foraging_max NUMERIC, 
-    fishing NUMERIC, 
+    fishing_weight NUMERIC, 
     fishing_max NUMERIC, 
-    enchanting NUMERIC, 
+    enchanting_weight NUMERIC, 
     enchanting_max NUMERIC, 
-    alchemy NUMERIC, 
+    alchemy_weight NUMERIC, 
     alchemy_max NUMERIC, 
-    taming NUMERIC, 
+    taming_weight NUMERIC, 
     taming_max NUMERIC, 
-    zombie NUMERIC, 
+    zombie_weight NUMERIC, 
     zombie_max NUMERIC, 
-    spider NUMERIC, 
+    spider_weight NUMERIC, 
     spider_max NUMERIC, 
-    wolf NUMERIC,  
+    wolf_weight NUMERIC,  
     wolf_max NUMERIC,  
-    enderman NUMERIC,  
+    enderman_weight NUMERIC,  
     enderman_max NUMERIC,  
-    minions NUMERIC, 
+    minions_weight NUMERIC, 
     minions_max NUMERIC, 
-    collections NUMERIC,
+    collections_weight NUMERIC,
     collections_max NUMERIC,
 
     PRIMARY KEY (version)
@@ -73,7 +73,7 @@ INSERT INTO weights VALUES (0, 0.000051926, 100, 0.000102955, 100, 0.000076098, 
 
 INSERT INTO players VALUES 
 ('abcdefgh', 'testUser'),
-('aaaaaaaa', 'user2');
+('aaaaaa', 'user2');
 
 INSERT INTO profiles VALUES ('abcdefgh', 'testprofile');
 INSERT INTO profiles VALUES ('aaaaaa', 'aprofile');
