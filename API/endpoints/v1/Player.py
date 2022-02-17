@@ -30,7 +30,7 @@ class PlayerWeight(Resource):
 
 
 def getPlayerStatsFromDatabase(UUID: str):
-    return db.selectQuery("SELECT * FROM stats LEFT JOIN profiles p ON (p.uuid = stats.uuid) WHERE p.uuid = ?", params=(UUID, ))
+    return db.selectQuery("SELECT * FROM stats INNER JOIN profiles p ON (p.profileid = stats.profileid) WHERE p.uuid = ?", params=(UUID, ))
 
 
 def getPlayerWeightsFromDatabase(UUID: str):
