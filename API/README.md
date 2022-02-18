@@ -14,3 +14,6 @@ run api_v1.py to open port :8000 to 127.0.0.1 for the API
 ### /v1/weights/version/[version]
 ### /v1/weights/
 ### /v1/weights/top/[category]
+
+
+### /v1/auth/signup (With parameters: email, username, password)
