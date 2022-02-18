@@ -69,6 +69,14 @@ CREATE TABLE weights (
     PRIMARY KEY (version)
 );
 
+CREATE TABLE api_users (
+    email varchar(100),
+    username varchar(100) UNIQUE,
+    password varchar(128),
+
+    PRIMARY KEY (email)
+);
+
 /*
 THE FOLLOWING CODE IS TEST-DATA. REMOVE THIS BEFORE PRODUCTION!
 */
