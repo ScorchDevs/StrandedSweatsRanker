@@ -1,5 +1,6 @@
 import database_interface as db
 from flask_restful import Resource
+from static.CONSTANTS import *
 
 class Weights(Resource):
     def get(self):
@@ -10,7 +11,7 @@ class WeightsTop(Resource):
         try:
             return {"data": db.selectQuery("SELECT uuid, profileid, %s FROM stats ORDER BY %s DESC" % (name, name))}
         except:
-            return {"message": "Category not found!"}
+            return {"message": CATEGORY_NOT_FOUND}
 class Weight(Resource):
     def get(self, version):
         return {"data": db.selectQuery("SELECT * FROM Weights WHERE version = ? ORDER BY version DESC LIMIT 1", params=(version,))}

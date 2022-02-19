@@ -2,23 +2,22 @@ from unittest import skip
 import database_interface as db
 from flask_restful import Resource
 from flask import request
-
 from endpoints.v1.Weights import Weights
+from static.CONSTANTS import *
 
 class Players(Resource):
     def get(self):
         try:
             return {"data": db.selectQuery("SELECT * FROM players INNER JOIN profiles ON (players.uuid = profiles.uuid)")}
         except Exception as e:
-            print(e)
-            return {"data": []}
+            return {"data": []}, 400
 
 class Player(Resource):
     def get(self, uuid):
         try:
-            return {"data": getPlayerStatsFromDatabase(uuid)}
+            return {"data": getPlayerStatsFromDatabase(uuid)}, 200
         except:
-            return {"message": "Player not found!"}
+            return {"message": USER_NOT_FOUND}, 400
 
 class PlayerWeight(Resource):
     def get(self, uuid):
@@ -26,7 +25,7 @@ class PlayerWeight(Resource):
             return {"data": getPlayerWeightsFromDatabase(uuid)}
         except Exception as e:
             print(e)
-            return {"message": "Player not found!"}
+            return {"message": USER_NOT_FOUND}, 400
 
 
 def getPlayerStatsFromDatabase(UUID: str):
