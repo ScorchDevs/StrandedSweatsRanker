@@ -73,6 +73,8 @@ CREATE TABLE api_users (
     email varchar(100),
     username varchar(100) UNIQUE,
     password varchar(128),
+    is_admin boolean,
+    allowed_to_use_api boolean,
 
     PRIMARY KEY (email)
 );

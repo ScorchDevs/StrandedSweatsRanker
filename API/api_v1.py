@@ -14,6 +14,7 @@ def favicon():
 
 api.add_resource(Main.Main, '/v1/')
 api.add_resource(Auth.SignUpForAPI, '/v1/auth/signup')
+api.add_resource(Auth.AllowUsername, '/v1/auth/allow/<username>')
 
 api.add_resource(Player.Players, '/v1/players/')
 api.add_resource(Player.Player, '/v1/players/<uuid>')
