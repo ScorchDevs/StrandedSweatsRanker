@@ -4,4 +4,8 @@ from static.CONSTANTS import *
 
 class Main(Resource):
     def get(self):
+        return {"versions": ['/v1/']}, 200
+
+class Mainv1(Resource):
+    def get(self):
         return {"status": API_READY}, 200
