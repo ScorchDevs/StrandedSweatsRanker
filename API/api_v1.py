@@ -12,7 +12,8 @@ api = Api(app)
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-api.add_resource(Main.Main, '/v1/')
+api.add_resource(Main.Main, '/')
+api.add_resource(Main.Mainv1, '/v1/')
 api.add_resource(Auth.SignUpForAPI, '/v1/auth/signup')
 api.add_resource(Auth.AllowUsername, '/v1/auth/allow/<username>')
 
