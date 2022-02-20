@@ -13,8 +13,7 @@ def serializeCursor(cursor):
     return results
 
 def selectQuery(query: str, *, params:list = []):
-    cursor = executeQuery(query, params=params)
-    return serializeCursor(cursor)
+    return executeQuery(query, params=params)
 
 def executeQuery(query: str, *, params:list = []):
     with sqlite3.connect(DATABASE_FILE) as connection:
@@ -22,19 +21,18 @@ def executeQuery(query: str, *, params:list = []):
         connection.row_factory = sqlite3.Row
         cursor = connection.cursor()
         cursor.execute(query, params)
-    return cursor
+    try:
+        return serializeCursor(cursor)
+    except Exception as e:
+        print(e)
+        return {}
 
 
 def runFileQuery(file: str, *, params: list = []):
     with open(QUERY_FILE_BASE_DIR + file, 'r') as f:
         queries = f.read()
         for query in queries.split(";"):
-            try:
-                cursor = executeQuery(query, params=params)
-                return serializeCursor(cursor)
-            except Exception as e:
-                print(e)
-                pass
+            executeQuery(query, params=params)
 
 if not os.path.isfile(DATABASE_FILE):
     runFileQuery("Setup.sql")
