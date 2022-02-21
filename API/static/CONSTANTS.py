@@ -7,7 +7,7 @@ ACCOUNT_CREATED = "Account succesfully created!"
 
 UNEXPECTED_ERROR = "Something unexpected went wrong!"
 
-NO_BODY_GIVEN_ERROR = "No body given!"
+NO_BODY_GIVEN_ERROR = "Missing authorization!"
 NO_USERNAME_GIVEN_ERROR = "No username given!"
 NO_EMAIL_GIVEN_ERROR = "No email given!"
 NO_PASSWORD_GIVEN_ERROR = "No password given!"
