@@ -27,6 +27,19 @@ def executeQuery(query: str, *, params:list = []):
         print(e)
         return {}
 
+def executeManyQuery(query: str, *, params:list = {}):
+    with sqlite3.connect(DATABASE_FILE) as connection:
+        connection.execute("PRAGMA foreign_keys = 1;")
+        connection.row_factory = sqlite3.Row
+        cursor = connection.cursor()
+        print(params)
+        cursor.executemany(query, params)
+    try:
+        return serializeCursor(cursor)
+    except Exception as e:
+        print(e)
+        return {}
+
 
 def runFileQuery(file: str, *, params: list = []):
     with open(QUERY_FILE_BASE_DIR + file, 'r') as f:
