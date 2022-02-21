@@ -27,4 +27,4 @@ api.add_resource(Weights.WeightsTop, '/v1/weights/top/<name>')
 
 
 if __name__ == '__main__': 
-    app.run(port=8000, host='127.0.0.1')
+    app.run(port=20000, host='0.0.0.0')
