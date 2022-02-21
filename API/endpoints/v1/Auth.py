@@ -53,7 +53,7 @@ def checkAdminLogin(login: dict):
     logged_in, error = checkUserCombinationCorrect(login)
     if not logged_in: return False, error
     try:
-        return db.selectQuery("SELECT is_admin FROM api_users WHERE username LIKE ?", params=(login['username'],))[0]['is_admin']
+        return db.selectQuery("SELECT is_admin FROM api_users WHERE username LIKE ?", params=(login['username'],))[0]['is_admin'], ''
     except:
         return 0
 
