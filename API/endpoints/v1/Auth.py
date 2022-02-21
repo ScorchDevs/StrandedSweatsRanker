@@ -40,7 +40,10 @@ def retrievePwdHashForUser(username):
 class AllowUsername(Resource):
     def post(self, username):
         body = request.get_json()
-        admin_logged_in, error = checkAdminLogin(body)
+        try:
+            admin_logged_in, error = checkAdminLogin(body["authorization"])
+        except:
+            admin_logged_in, error = False, NO_BODY_GIVEN_ERROR
         if not admin_logged_in: return {"message": "Something went wrong: " + error}, 400
         try:
             db.executeQuery("UPDATE api_users SET allowed_to_use_api = 1 WHERE username = ?", params=(username,))
